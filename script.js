@@ -6,9 +6,13 @@ if (number > 10 || number < 0) {
     number
   );
 } else {
-  for (let i = number; i >= 0; i--) {
-    console.log(i);
-  }
+
+  // prompt value by default is string i need to *1 to get a number link (number*1)
+  console.log(typeof (number));
+
+  // for (let i = number; i >= 0; i--) {
+  //   console.log(i);
+  // }
 
   // while (number >= 0) {
   //   console.log(number);
