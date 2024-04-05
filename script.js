@@ -1,27 +1,8 @@
-const guest = 10
-
-let value
-
-while (true) {
-  value = prompt("Guest the number") * 1
-
-  if (value > guest) {
-    console.log('moins');
-  } else if (value < guest) {
-    console.log('plus');
+function canDrive(age, contry) {
+  if (age > 18 && contry === 'FR' || age > 18 && contry === 'EN') {
+    return true
   }
-  else break
+  return false
 }
 
-console.log('Bravo');
-
-
-
-// do {
-//   value = prompt("Guest the number") * 1
-//   if (guest !== value) {
-//     console.log('Dommageeeee');
-//   }
-// } while (guest !== value);
-
-// console.log('Bravo');
+console.log(canDrive(19, 'FR'));
