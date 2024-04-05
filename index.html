@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-      console.log("1");
+      let number = prompt("tape number beetween 0 and 10");
 
-      setTimeout(() => {
-        console.log("2");
-      }, 0);
+      if (number > 10 || number < 0) {
+        console.log(
+          "le nombre n'est pas entre 0 et 10. The number was :",
+          number
+        );
+      } else {
+        for (let i = 0; i >= 0; i--) {
+          console.log(number);
+        }
 
-      new Promise((resolve) => {
-        console.log("3");
-        resolve();
-      })
-        .then(() => console.log("4"))
-        .finally(() => console.log("5"))
-        .then(() => console.log("6"));
-
-      console.log("7");
+        //while (number >= 0) {
+        //console.log(number);
+        //number--;
+        //}
+      }
     </script>
   </head>
   <body></body>
