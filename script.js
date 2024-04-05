@@ -2,7 +2,7 @@ const guest = 10
 
 let value
 
-while (guest !== value) {
+while (true) {
   value = prompt("Guest the number") * 1
 
   if (value > guest) {
@@ -10,6 +10,7 @@ while (guest !== value) {
   } else if (value < guest) {
     console.log('plus');
   }
+  else break
 }
 
 console.log('Bravo');
