@@ -1,8 +1,25 @@
-function canDrive(age, contry) {
-  if (age > 18 && contry === 'FR' || age > 18 && contry === 'EN') {
-    return true
-  }
-  return false
+const random = Math.floor(Math.random() * (10 + 1))
+
+console.log(random);
+
+function isRight(n) {
+  return random === n
 }
 
-console.log(canDrive(19, 'FR'));
+
+function guess() {
+  const number = prompt('guess the value');
+  return isRight(number)
+}
+
+
+for (i = 0; i < 3; i++) {
+  if (guess()) {
+    console.log('Bravo')
+    break
+  } else if (i === 2) {
+    console.log('-_- vous avez perdu')
+  }
+}
+
+
