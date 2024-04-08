@@ -6,9 +6,9 @@ function isRight(n) {
   return random === n
 }
 
-
 function guess() {
-  const number = prompt('guess the value');
+  const number = prompt('guess the number beetween 0 and 10')*1;
+  console.log(typeof (number))
   return isRight(number)
 }
 
