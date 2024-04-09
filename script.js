@@ -13,6 +13,7 @@ function guess() {
 }
 
 
+
 for (i = 0; i < 3; i++) {
   if (guess()) {
     console.log('Bravo')
