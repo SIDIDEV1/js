@@ -29,8 +29,13 @@ const moyenne = (notes) => {
     return sum / notes.length
 }
 
+const range = (a, b) => {
+    return b.moyenne - a.moyenne
+}
 
 for (let student of students) {
     student.moyenne = moyenne(student.notes)
-    console.log(student);
 }
+
+console.log(students.sort(range))
+
