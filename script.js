@@ -1,52 +1,35 @@
-const students = [
-    {
-        name: "John",
-        notes: [1, 20, 18, 19, 12],
-    },
-    {
-        name: "Jane",
-        notes: [17, 18, 20, 13, 15],
-    },
-    {
-        name: "Sophie",
-        notes: [17, 12, 14, 15, 13],
-    },
-    {
-        name: "Marc",
-        notes: [2, 3, 5, 8, 9],
-    },
-    {
-        name: "Manon",
-        notes: [18, 17, 18, 19, 12],
-    },
-];
+const sentence = `Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.`;
 
-const moyenne = (notes) => {
-    let sum = 0;
-    for (let note of notes) {
-        sum = sum + note;
+const objets = {};
+
+const words = sentence
+    .toLocaleLowerCase()
+    .replaceAll(",", "")
+    .replaceAll("!", "")
+    .replaceAll("<", "")
+    .replaceAll(">", "")
+    .replaceAll('"', "")
+    .replaceAll(".", "")
+    .replaceAll("(", "")
+    .replaceAll(")", "")
+    .split(" ");
+
+for (let word of words) {
+    if (word !== "") {
+        if (objets[word]) {
+            objets[word]++;
+        } else {
+            objets[word] = 1;
+        }
     }
-    return sum / notes.length;
-};
-
-const range = (a, b) => {
-    return b.moyenne - a.moyenne;
-};
-
-for (let student of students) {
-    student.moyenne = moyenne(student.notes);
 }
 
-students.sort(range);
+const objetArray = []
 
-const formatStudents = (student) => {
-    return `${student.name} a une moyen de ${student.moyenne}/20. La note max : ${Math.max(...student.notes)} et min : ${Math.min(...student.notes)}`;
-};
+for (let k in objets) {
+    objetArray.push({
+        word: k, count: objets[k]
+    })
+}
 
-console.log(students);
-
-console.log(`Le top 3 de la classe sont : 
-1 : ${formatStudents(students[0])}
-2 : ${formatStudents(students[1])}
-3 : ${formatStudents(students[2])}
-`);
+console.log(objetArray.sort((a, b) => b.count - a.count));
