@@ -1,26 +1,17 @@
-const random = Math.floor(Math.random() * (10 + 1))
-
-console.log(random);
-
-function isRight(n) {
-  return random === n
+function isPalindrome(word) {
+    const reverse = word.split('').reverse().join('')
+    return reverse.toUpperCase() === word.toUpperCase()
 }
 
-function guess() {
-  const number = prompt('guess the number beetween 0 and 10')*1;
-  console.log(typeof (number))
-  return isRight(number)
+const words = {
+    Sidi: false,
+    Sisis: true,
+    kayak: true,
+    mali: false
 }
 
-
-
-for (i = 0; i < 3; i++) {
-  if (guess()) {
-    console.log('Bravo')
-    break
-  } else if (i === 2) {
-    console.log('-_- vous avez perdu')
-  }
+for (word in words) {
+    if (isPalindrome(word) !== words[word]) {
+        console.error(`isPalindrome(${word}) aurait du renvoyer ${words[word]}`);
+    }
 }
-
-
