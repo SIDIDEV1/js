@@ -40,7 +40,7 @@ for (let student of students) {
 students.sort(range);
 
 const formatStudents = (student) => {
-    return `${student.name} a une moyen de ${student.moyenne}/20`;
+    return `${student.name} a une moyen de ${student.moyenne}/20. La note max : ${Math.max(...student.notes)} et min : ${Math.min(...student.notes)}`;
 };
 
 console.log(students);
