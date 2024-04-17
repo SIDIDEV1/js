@@ -1,42 +1,37 @@
+class Rectangle {
 
-const moyenne = (notes) => {
-    let sum = 0
-
-    for (let note of notes) {
-        sum = sum + note
-    }
-    return sum / notes.length
-}
-
-class Student {
-    ecole = 'vinci'
-    _notes = []
-
-    constructor(firstname, lastname) {
-        this.firstname = firstname
-        this.lastname = lastname
+    constructor(width, height) {
+        this.width = width
+        this.height = height
     }
 
-    set notes(v) {
-        if (Array.isArray(v)) {
-            this._notes = v
-        }
+    get perimeter() {
+        return (this.width + this.height) * 2
     }
 
-    get name() {
-        return `${this.firstname} ${this.lastname}`
+    get isValid() {
+        return this.width > 0 && this.height > 0
     }
 
-    canPass() {
-        return moyenne(this._notes) >= 10
+    isBiggerThan(c) {
+        return this.perimeter > c.perimeter
     }
 }
 
 
-const jonh = new Student('sidi', 'mariko')
-const jane = new Student('jane', 'mariko')
-jonh.notes = [10]
-jane.notes = [10, 12, 12, 1]
+class Square extends Rectangle {
+    constructor(width) {
+        super(width, width)
+    }
 
-console.log(jonh.name);
-console.log(jane.canPass());
+}
+
+
+const r = new Rectangle(10, 20);
+console.log(r.perimeter) // 60
+console.log(r.isValid) // true
+const r2 = new Rectangle(-10, 20);
+console.log(r2.isValid) // false
+const c = new Square(10);
+console.log(c.perimeter) // 40
+console.log(r.isBiggerThan(c)) // true
