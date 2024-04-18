@@ -1,45 +1,18 @@
-function wait(duration) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(duration)
-        }, duration)
-    })
-}
+console.log("1")
+
+setTimeout(()=> {
+  console.log("2");
+}, 0);
+
+new Promise((resolve) => {
+  console.log("3")
+  resolve()
+})
+  .then(()=> console.log("4"))
+  .finally(() => console.log("5"))
+  .then(()=> console.log("6"))
+
+console.log("7");
 
 
-function waitAndFail(duration) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            reject(duration)
-        }, duration)
-    })
-}
-
-
-async function test() {
-    try {
-        await waitAndFail(2000)
-        console.log('One');
-        await wait(1000)
-        console.log('two');
-    } catch (error) {
-        console.log('Error');
-    }
-
-}
-
-const sidi = async () => {
-    await wait(1000)
-    console.log('Sidi');
-}
-
-
-const fn = async function () {
-    await wait(1000)
-    console.log('fn');
-}
-
-
-test()
-sidi()
-fn()
+// 1, 3, 7, 4, 5, 6, 2
