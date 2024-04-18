@@ -1,57 +1,40 @@
-class Book {
-    #page = 1
+class Rectangle {
 
-    constructor(title, pages) {
-        this.title = title
-        this.pages = pages
-    }
+    constructor(width, height) {
+        this.width = width
+        this.height = height
 
-    get page() {
-        return this.#page
-    }
-
-    nextPage() {
-        if (this.#page < this.pages) {
-            this.#page++
+        if (width <= 0 || height <= 0) {
+            throw new Error('Vous n\'avez pas le droit d\'avoir une ou des dimensions negatives')
         }
     }
 
-    close() {
-        this.#page = 1
+    get perimeter() {
+        return (this.width + this.height) * 2
+    }
+
+    get isValid() {
+        return this.width > 0 && this.height > 0
+    }
+
+    isBiggerThan(c) {
+        return this.perimeter > c.perimeter
     }
 }
 
 
-class Library {
-    #books = []
-
-    addBook(b) {
-        this.#books.push(b)
+class Square extends Rectangle {
+    constructor(width) {
+        super(width, width)
     }
 
-    addBooks(books) {
-        books.forEach(book => this.addBook(book))
-    }
-
-    findBooksByLetter(l) {
-        return this.#books.filter(book => book.title[0].toLowerCase() === l.toLowerCase())
-    }
 }
 
+try {
+    const width = parseInt(prompt('Tapez la largeur : '), 10)
+    const height = parseInt(prompt('Tapez la hauter : '), 10)
+    const r = new Rectangle(width, height)
+} catch (error) {
+    console.log(error);
+}
 
-
-const b = new Book('Seigneur des anneaux', 200);
-console.log(b.page)
-b.nextPage()
-console.log(b.page)
-b.close()
-console.log(b.page)
-
-const l = new Library()
-l.addBook(b)
-l.addBooks([
-    new Book('Ready player one', 100),
-    new Book('Oui-oui', 10),
-    new Book('Sillage', 50),
-])
-console.log(l.findBooksByLetter('S'))
