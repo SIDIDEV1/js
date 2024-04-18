@@ -1,22 +1,12 @@
-// const t = setInterval(() => {
-//     console.log(1)
-// }, 1000);
-
-// setTimeout(() => {
-//     clearInterval(t)
-// }, 5000)
+const p = new Promise((resolve, reject) => {
+    resolve(2)
+})
 
 
-function decompte(n) {
-    const t = setInterval(() => {
-        n--
-        console.log(n);
-        if (n === 0) {
-            clearInterval(t)
-        }
-    }, 1000)
-
-
-}
-
-decompte(3)
+p.then((n) => {
+    console.log(n);
+    throw new Error('Zbiii')
+}).then((n) => {
+    console.log(n);
+}).catch(e => console.log(e.message))
+    .finally(() => console.log('finaly'))
