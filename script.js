@@ -1,12 +1,30 @@
-const p = new Promise((resolve, reject) => {
-    resolve(2)
-})
+function wait(duration) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(duration)
+        }, duration)
+    })
+}
 
 
-p.then((n) => {
-    console.log(n);
-    throw new Error('Zbiii')
-}).then((n) => {
-    console.log(n);
-}).catch(e => console.log(e.message))
-    .finally(() => console.log('finaly'))
+function waitAndFail(duration) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(duration)
+        }, duration)
+    })
+}
+
+
+wait(2000)
+    .then((n) => {
+        console.log('first watting : ' + n);
+        return wait(1000)
+    })
+    .then((n) => {
+        console.log('first watting : ' + n);
+        return waitAndFail(2000)
+    })
+    .catch((e) => {
+        console.log(e);
+    })
