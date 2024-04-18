@@ -30,20 +30,11 @@ class Library {
     }
 
     addBooks(books) {
-        for (let book of books) {
-            this.addBook(book)
-        }
+        books.forEach(book => this.addBook(book))
     }
 
     findBooksByLetter(l) {
-        console.log(l);
-        find = []
-        for (let book of this.#books) {
-            if (book.title[0].toLowerCase() === l.toLowerCase()) {
-                find.push(book)
-            }
-        }
-        return find
+        return this.#books.filter(book => book.title[0].toLowerCase() === l.toLowerCase())
     }
 }
 
@@ -63,4 +54,4 @@ l.addBooks([
     new Book('Oui-oui', 10),
     new Book('Sillage', 50),
 ])
-console.log(l.findBooksByLetter(''))
+console.log(l.findBooksByLetter('S'))
