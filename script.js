@@ -16,15 +16,30 @@ function waitAndFail(duration) {
 }
 
 
-wait(2000)
-    .then((n) => {
-        console.log('first watting : ' + n);
-        return wait(1000)
-    })
-    .then((n) => {
-        console.log('first watting : ' + n);
-        return waitAndFail(2000)
-    })
-    .catch((e) => {
-        console.log(e);
-    })
+async function test() {
+    try {
+        await waitAndFail(2000)
+        console.log('One');
+        await wait(1000)
+        console.log('two');
+    } catch (error) {
+        console.log('Error');
+    }
+
+}
+
+const sidi = async () => {
+    await wait(1000)
+    console.log('Sidi');
+}
+
+
+const fn = async function () {
+    await wait(1000)
+    console.log('fn');
+}
+
+
+test()
+sidi()
+fn()
