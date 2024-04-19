@@ -1,23 +1,20 @@
-const MONTHS = 'months'
-const DAYS = 'days'
-const YEARS = 'years'
+const YEARS = 0
+const MONTHS = 1
+const DAYS = 2
+
 
 function addInterval(date, n, unit) {
-    const newDate = new Date(date.getTime())
-
-    switch (unit) {
-        case MONTHS:
-            newDate.setMonth(newDate.getMonth() + n)
-            break;
-        case DAYS:
-            newDate.setDate(newDate.getDate() + n)
-            break;
-        case YEARS:
-            newDate.setFullYear(newDate.getFullYear() + n)
-            break;
-    }
-
-    return newDate
+    const parts = [
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        date.getHours(),
+        date.getMinutes(),
+        date.getSeconds(),
+        date.getMilliseconds()
+    ]
+    parts[unit] += n
+    return new Date(...parts)
 }
 
 
