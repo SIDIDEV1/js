@@ -3,7 +3,7 @@ const MONTHS = 1
 const DAYS = 2
 
 
-function addInterval(date, n, unit) {
+function addInterval(date, interval) {
     const parts = [
         date.getFullYear(),
         date.getMonth(),
@@ -13,13 +13,19 @@ function addInterval(date, n, unit) {
         date.getSeconds(),
         date.getMilliseconds()
     ]
-    parts[unit] += n
+    for (const [unit, value] of Object.entries(interval)) {
+        parts[unit] += value
+    }
     return new Date(...parts)
 }
 
 
 const today = new Date()
-const future = addInterval(today, 3, YEARS)
+const future = addInterval(today, {
+    [MONTHS]: 1,
+    [YEARS]: 1,
+    [DAYS]: 2,
+})
 
 console.log(today);
 console.log(future);
