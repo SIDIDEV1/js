@@ -1,5 +1,6 @@
-const lis = document.querySelectorAll('li')
-// NodeList isn't a Array it's look like
-console.log(lis);
+const button = document.querySelector('button')
 
-lis.forEach(i => console.log(i))
+button.addEventListener('click', function (e) {
+    console.log(e);
+})
+
