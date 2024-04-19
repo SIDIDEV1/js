@@ -1,17 +1,12 @@
-const a = new AbortController()
-/**
- * 
- * 
- * 
- */
-Promise.race([
-    fetch('https://jsonplaceholder.typicode.com/users/?_limit=6&_delay=5000', { signal: a.signal }),
-    fetch('https://jsonplaceholder.typicode.com/posts/?_limit=3', { signal: a.signal })
-])
-    .then(r => r.json())
-    .then(body => {
-        a.abort()
-        console.log(body)
-    })
-    .catch(e => console.error(e.message))
+function addDate(date, days) {
+    const newDate = new Date(date.getTime())
+    newDate.setDate(newDate.getDate() + days)
+    return newDate
+}
 
+
+const today = new Date()
+const tomorrow = addDate(today, 1)
+
+console.log(today);
+console.log(tomorrow);
